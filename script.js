@@ -7,22 +7,31 @@ addBtn.addEventListener('click', addTask);
 
 function addTask() {
   const taskText = taskInput.value.trim();
+  const dueDate = document.getElementById('dueDate').value;
+  const priority = document.getElementById('priority').value;
+
   if (taskText === "") return;
 
-  const task = { text: taskText, completed: false };
+  const task = { text: taskText, completed: false, dueDate, priority };
   addTaskToDOM(task);
   saveTask(task);
   taskInput.value = "";
+  document.getElementById('dueDate').value = "";
+  document.getElementById('priority').value = "Low";
 }
+
 
 function addTaskToDOM(task) {
   const li = document.createElement('li');
   if (task.completed) li.classList.add('completed');
 
   li.innerHTML = `
-    <span>${task.text}</span>
+    <div class="task-info">
+      <span>${task.text}</span>
+      <small>📅 ${task.dueDate || 'No date'} | 🔥 ${task.priority}</small>
+    </div>
     <div class="buttons">
-      <button class="edit"><i class='bx bxs-edit'></i></button>
+      <button class="edit"><i class='bx bx-edit'></i></button>
       <button class="delete"><i class='bx bx-trash'></i></button>
     </div>
   `;
