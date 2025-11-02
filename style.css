@@ -1,7 +1,7 @@
 /* ====== Base Styles ====== */
 body {
   font-family: Poppins, sans-serif;
-  background-color: #f4f4f4;
+ background: white;
   color: #333;
   display: flex;
   justify-content: center;
