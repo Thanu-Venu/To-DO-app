@@ -74,6 +74,29 @@ function addTaskToDOM(task) {
   taskList.appendChild(li);
 }
 
+const filterSelect = document.getElementById('filter');
+filterSelect.addEventListener('change', filterTasks);
+
+function filterTasks() {
+  const filter = filterSelect.value;
+  const tasks = taskList.querySelectorAll('li');
+
+  tasks.forEach(task => {
+    switch (filter) {
+      case 'all':
+        task.style.display = 'flex';
+        break;
+      case 'completed':
+        task.style.display = task.classList.contains('completed') ? 'flex' : 'none';
+        break;
+      case 'pending':
+        task.style.display = task.classList.contains('completed') ? 'none' : 'flex';
+        break;
+    }
+  });
+}
+
+
 // 🔹 LocalStorage functions
 function getTasks() {
   return JSON.parse(localStorage.getItem('tasks')) || [];
@@ -107,3 +130,9 @@ function updateTaskText(oldText, newText) {
   tasks = tasks.map(t => t.text === oldText ? { ...t, text: newText } : t);
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+const darkModeToggle = document.getElementById("darkModeToggle");
+
+darkModeToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+});

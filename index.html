@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do App</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -7,11 +10,29 @@
 <body>
     <div class="container">
         <h1>To-Do</h1>
+
         <div class="input-section">
-            <input type="text" placeholder="add a new task.." id="taskInput">
-            <button id="addBtn">Add</button>
+            <input type="text" placeholder="Add a new task..." id="taskInput">
+            <button id="addBtn"><i class='bx bx-plus'></i></button>
         </div>
+
+        <select id="filter">
+            <option value="all">All Tasks</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+        </select>
+
         <ul id="taskList"></ul>
+
+        <div class="footer">
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+            <span>🌙 Dark Mode</span>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+</html>
